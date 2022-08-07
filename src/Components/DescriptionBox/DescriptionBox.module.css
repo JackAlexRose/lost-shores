@@ -1,0 +1,9 @@
+.wrapper {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.descriptionBox {
+  width: 1000px;
+}
