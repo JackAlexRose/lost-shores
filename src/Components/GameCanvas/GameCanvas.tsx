@@ -14,14 +14,14 @@ export const GameCanvas: React.FC<GameCanvasProps> = (props) => {
   const p5Ref = React.useRef<p5Types>();
 
   useEffect(() => {
-    if(p5Ref.current) {
+    if (p5Ref.current) {
       p5Ref.current.redraw();
     }
   }, [gameState]);
 
   const setup = useCallback((p5: p5Types, canvasParentRef: Element) => {
     p5.noLoop();
-    if(!canvasParentRef){
+    if (!canvasParentRef) {
       return;
     }
 
@@ -33,29 +33,46 @@ export const GameCanvas: React.FC<GameCanvasProps> = (props) => {
     ).parent(canvasParentRef);
   }, []);
 
-  const draw = useCallback((p5: p5Types) => {
-    p5.background(255);
-    p5.fill(0);
-    p5.noStroke();
-    p5.textSize(20);
-    p5.textAlign(p5.CENTER, p5.CENTER);
-    gameState.tiles?.forEach((line: string[], i: number) => {
-      line.forEach((tile: string, j: number) => {
-        p5.fill(p5.color(TileTypes[tile].backgroundColor));
-        p5.rect(j * 10, i * 10, 10, 10);
-        p5.fill(p5.color(TileTypes[tile].color));
+  const draw = useCallback(
+    (p5: p5Types) => {
+      p5.background(255);
+      p5.fill(0);
+      p5.noStroke();
+      p5.textSize(20);
+      p5.textAlign(p5.CENTER, p5.CENTER);
+      gameState.tiles?.forEach((line: string[], i: number) => {
+        line.forEach((tile: string, j: number) => {
+          p5.fill(p5.color(TileTypes[tile].backgroundColor));
+          p5.rect(j * 10, i * 10, 10, 10);
+          p5.fill(p5.color(TileTypes[tile].color));
 
-        p5.text(
-          TileTypes[tile].char,
-          (j * p5.width) / 100 + 5,
-          (i * p5.height) / 100 + 5
-        );
+          let offsetX = 5;
+          let offsetY = 5;
+
+          if (tile === "grass") {
+            offsetY += Math.random() * 5;
+            offsetX += Math.random() * 5 - 2.5;
+          }
+
+          p5.text(
+            TileTypes[tile].char,
+            (j * p5.width) / 100 + offsetX,
+            (i * p5.height) / 100 + offsetY
+          );
+        });
       });
-    });
-  }, [gameState]);
+    },
+    [gameState]
+  );
+
+  const canvasClicked = () => {
+    if (p5Ref.current) {
+      p5Ref.current.redraw();
+    }
+  };
 
   return (
-    <div className={styles.canvasWrapper}>
+    <div className={styles.canvasWrapper} onClick={canvasClicked}>
       <Sketch
         key={gameState.tiles?.length}
         className={styles.gameCanvas}
