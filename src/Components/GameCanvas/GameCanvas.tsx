@@ -27,10 +27,14 @@ export const GameCanvas: React.FC<GameCanvasProps> = (props) => {
 
     p5Ref.current = p5;
 
-    p5.createCanvas(
+    const canvas = p5.createCanvas(
       canvasParentRef.clientWidth,
       canvasParentRef.clientHeight
     ).parent(canvasParentRef);
+
+    canvas.mouseClicked((event) => {
+      console.log(event)
+    })
   }, []);
 
   const draw = useCallback(
@@ -54,25 +58,49 @@ export const GameCanvas: React.FC<GameCanvasProps> = (props) => {
             offsetX += Math.random() * 5 - 2.5;
           }
 
+          if (tile === "stone") {
+            offsetY += Math.random() * 5;
+            offsetX += Math.random() * 5 - 2.5;
+          }
+
+          if (tile === "flower") {
+            offsetY -= Math.random() * 5;
+            offsetX -= Math.random() * 5 - 2.5;
+          }
+
+          if (tile === "tree") {
+            offsetY -= Math.random() * 7 + 3;
+            offsetX += Math.random() * 7 - 3.5;
+            p5.strokeWeight(3);
+            p5.stroke(p5.color(TileTypes[tile].color));
+          }
+
+          if(tile === "mountain") {
+            offsetX += Math.random() * 7 - 3.5;
+            p5.textSize(10);
+          }
+
+          if(tile === "peak") {
+            p5.textSize(10);
+          }
+
           p5.text(
             TileTypes[tile].char,
             (j * p5.width) / 100 + offsetX,
             (i * p5.height) / 100 + offsetY
           );
+
+          p5.strokeWeight(1);
+          p5.noStroke();
+          p5.textSize(20);
         });
       });
     },
     [gameState]
   );
 
-  const canvasClicked = () => {
-    if (p5Ref.current) {
-      p5Ref.current.redraw();
-    }
-  };
-
   return (
-    <div className={styles.canvasWrapper} onClick={canvasClicked}>
+    <div className={styles.canvasWrapper}>
       <Sketch
         key={gameState.tiles?.length}
         className={styles.gameCanvas}

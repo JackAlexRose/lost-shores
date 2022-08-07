@@ -23,14 +23,41 @@ export const GameManager: React.FC = () => {
     for (let i = 0; i < 100; i++) {
       let line: TypeNames[] = [];
       for (let j = 0; j < 100; j++) {
-        if (Math.random() > 0.2) {
+        if (Math.random() > 0.5) {
           line.push("water");
         } else {
-          line.push("grass");
+          if(Math.random() > 0.2) {
+            if(Math.random() > 0.5) {
+            line.push("grass");
+            }
+            else {
+              line.push("sand");
+            }
+          } else {
+            if(Math.random() > 0.5) {
+            line.push("stone");
+            } else {
+              if(Math.random() > 0.5) {
+                line.push("tree");
+              } else {
+                if(Math.random() > 0.5) {
+                  line.push("mountain");
+                } else {
+                  if(Math.random() > 0.5) {
+                    line.push("peak");
+                  } else {
+              line.push("flower");
+                  }
+                }
+              }
+            }
+          }
         }
       }
+      console.log(line.length);
       grid.push(line);
     }
+    console.log(grid.length);
 
     setGameState({
       tiles: grid,
