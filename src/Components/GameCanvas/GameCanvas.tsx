@@ -27,14 +27,10 @@ export const GameCanvas: React.FC<GameCanvasProps> = (props) => {
 
     p5Ref.current = p5;
 
-    const canvas = p5.createCanvas(
+    p5.createCanvas(
       canvasParentRef.clientWidth,
       canvasParentRef.clientHeight
     ).parent(canvasParentRef);
-
-    canvas.mouseClicked((event) => {
-      console.log(event)
-    })
   }, []);
 
   const draw = useCallback(
