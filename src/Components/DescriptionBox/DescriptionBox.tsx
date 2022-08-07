@@ -44,6 +44,8 @@ export const DescriptionBox: React.FC = () => {
           algorithm used please watch an inspiration of mine{" "}
           <a href="https://youtu.be/wbpMiKiSKm8">Sebastian Lague</a>.
           <br /> <br />
+          You can save the canvas as a png by right clicking it. <br />
+          <br />
           The code is available on{" "}
           <a href="https://github.com/JackAlexRose/lost-shores">Github</a>.
         </Typography>
