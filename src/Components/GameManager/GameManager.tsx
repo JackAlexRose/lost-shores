@@ -66,6 +66,7 @@ export const GameManager: React.FC = () => {
         y: 0,
       },
     });
+    console.log("Generated new map");
   }, []);
 
   return <GameCanvas gameState={gameState} />;

@@ -35,6 +35,7 @@ export const GameCanvas: React.FC<GameCanvasProps> = (props) => {
 
   const draw = useCallback(
     (p5: p5Types) => {
+      console.log("draw");
       p5.background(255);
       p5.fill(0);
       p5.noStroke();
