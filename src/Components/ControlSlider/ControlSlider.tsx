@@ -19,11 +19,15 @@ export const ControlSlider: React.FC<ControlSliderProps> = (props) => {
       <Slider
         className={styles.slider}
         size="small"
-        defaultValue={props.discrete ? props.value : props.value * props.scaleFactor}
+        defaultValue={
+          props.discrete ? props.value : props.value * props.scaleFactor
+        }
         aria-label="Small"
         valueLabelDisplay="auto"
         color="secondary"
-        scale={props.discrete ? undefined : (value) => value / props.scaleFactor}
+        scale={
+          props.discrete ? undefined : (value) => value / props.scaleFactor
+        }
         marks={props.discrete}
         min={props.discrete ? 0 : undefined}
         max={props.discrete ? 100 / props.scaleFactor : undefined}

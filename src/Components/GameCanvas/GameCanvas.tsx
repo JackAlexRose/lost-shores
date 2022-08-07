@@ -27,10 +27,7 @@ export const GameCanvas: React.FC<GameCanvasProps> = (props) => {
 
     p5Ref.current = p5;
 
-    p5.createCanvas(
-      1000,
-      1000
-    ).parent(canvasParentRef);
+    p5.createCanvas(1000, 1000).parent(canvasParentRef);
   }, []);
 
   const draw = useCallback(
@@ -71,12 +68,12 @@ export const GameCanvas: React.FC<GameCanvasProps> = (props) => {
             p5.stroke(p5.color(TileTypes[tile].color));
           }
 
-          if(tile === "mountain") {
+          if (tile === "mountain") {
             offsetX += Math.random() * 7 - 3.5;
             p5.textSize(10);
           }
 
-          if(tile === "peak") {
+          if (tile === "peak") {
             p5.textSize(10);
           }
 

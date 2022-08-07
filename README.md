@@ -1,4 +1,5 @@
 # Lost Shores
+
 Lost shores is a fun little hobby project I'm messing around with. It's a very basic procedural map generator inspired by Dwarf Fortress. I am going to be experimenting with procedural generation and some other things. The game/project is currently in development, its super basic but in the interest of "working in public", here it is.
 
 ## Available Scripts

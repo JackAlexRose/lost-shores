@@ -1,1 +1,1 @@
-declare module 'perlin-noise';
+declare module "perlin-noise";

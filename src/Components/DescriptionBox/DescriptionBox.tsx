@@ -40,7 +40,8 @@ export const DescriptionBox: React.FC = () => {
           Try increasing the number of octaves and amplitude to get a more
           interesting, larger world. Increasing the persistence leads to more
           fine grained noise, which means more small details. <br /> <br />
-          The code is available on{" "} <a href="https://github.com/JackAlexRose/lost-shores">Github</a>.
+          The code is available on{" "}
+          <a href="https://github.com/JackAlexRose/lost-shores">Github</a>.
         </Typography>
       </div>
     </div>
