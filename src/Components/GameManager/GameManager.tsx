@@ -15,8 +15,7 @@ export const GameManager: React.FC = () => {
   });
 
   useEffect(() => {
-    if (firstRenderRef.current) {
-      firstRenderRef.current = false;
+    if (!firstRenderRef.current) {
       return;
     }
 
@@ -66,7 +65,8 @@ export const GameManager: React.FC = () => {
         y: 0,
       },
     });
-    console.log("Generated new map");
+
+    firstRenderRef.current = false;
   }, []);
 
   return <GameCanvas gameState={gameState} />;
