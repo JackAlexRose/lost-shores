@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import Sketch from "react-p5";
 import p5Types from "p5";
 import styles from "./GameCanvas.module.css";
@@ -11,17 +11,29 @@ export type GameCanvasProps = {
 
 export const GameCanvas: React.FC<GameCanvasProps> = (props) => {
   const { gameState } = props;
-  const [drawThrottle, setDrawThrottle] = React.useState(false);
+  const p5Ref = React.useRef<p5Types>();
 
-  const setup = (p5: p5Types, canvasParentRef: Element) => {
+  useEffect(() => {
+    if(p5Ref.current) {
+      p5Ref.current.redraw();
+    }
+  }, [gameState]);
+
+  const setup = useCallback((p5: p5Types, canvasParentRef: Element) => {
+    p5.noLoop();
+    if(!canvasParentRef){
+      return;
+    }
+
+    p5Ref.current = p5;
+
     p5.createCanvas(
       canvasParentRef.clientWidth,
       canvasParentRef.clientHeight
     ).parent(canvasParentRef);
-    p5.noLoop();
-  };
+  }, []);
 
-  const draw = (p5: p5Types) => {
+  const draw = useCallback((p5: p5Types) => {
     p5.background(255);
     p5.fill(0);
     p5.noStroke();
@@ -40,26 +52,15 @@ export const GameCanvas: React.FC<GameCanvasProps> = (props) => {
         );
       });
     });
-  };
-
-  const mousePressed = (p5: p5Types) => {
-    if(drawThrottle){
-      return;
-    }
-    p5.redraw();
-    setDrawThrottle(true);
-    setTimeout(() => {
-      setDrawThrottle(false);
-    }, 100);
-  };
+  }, [gameState]);
 
   return (
     <div className={styles.canvasWrapper}>
       <Sketch
+        key={gameState.tiles?.length}
         className={styles.gameCanvas}
         setup={setup}
         draw={draw}
-        mouseClicked={mousePressed}
       />
     </div>
   );

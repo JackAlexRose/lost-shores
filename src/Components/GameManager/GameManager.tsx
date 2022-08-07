@@ -4,6 +4,7 @@ import { TypeNames } from "../../types/TileTypes";
 import { GameCanvas } from "../GameCanvas";
 
 export const GameManager: React.FC = () => {
+  const firstRenderRef = React.useRef(true);
   const [gameState, setGameState] = React.useState<GameState>({
     tiles: [[]],
     playerLocation: {
@@ -13,6 +14,11 @@ export const GameManager: React.FC = () => {
   });
 
   useEffect(() => {
+    if (firstRenderRef.current) {
+      firstRenderRef.current = false;
+      return;
+    }
+
     let grid: TypeNames[][] = [];
     for (let i = 0; i < 100; i++) {
       let line: TypeNames[] = [];
@@ -25,7 +31,7 @@ export const GameManager: React.FC = () => {
       }
       grid.push(line);
     }
-    
+
     setGameState({
       tiles: grid,
       playerLocation: {
