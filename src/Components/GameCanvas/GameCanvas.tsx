@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect } from "react";
 import Sketch from "react-p5";
 import p5Types from "p5";
-import styles from "./GameCanvas.module.css";
 import { GameState } from "../../types/GameState";
 import { TileTypes } from "../../types/TileTypes";
+import styles from "./GameCanvas.module.css";
 
 export type GameCanvasProps = {
   gameState: GameState;
