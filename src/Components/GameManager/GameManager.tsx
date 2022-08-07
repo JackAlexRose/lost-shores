@@ -28,7 +28,8 @@ export const GameManager: React.FC = () => {
       y: 0,
     },
   });
-  const [noiseOptions, setNoiseOptions] = React.useState<noiseOptions>(defaultNoiseOptions);
+  const [noiseOptions, setNoiseOptions] =
+    React.useState<noiseOptions>(defaultNoiseOptions);
 
   useEffect(() => {
     if (!firstRenderRef.current) {
@@ -48,33 +49,26 @@ export const GameManager: React.FC = () => {
       let line: TypeNames[] = [];
       for (let x = 0; x < 100; x++) {
         const height = noiseMap[x + y * 100];
-        if (height > 0.3) {
-          if (height > 0.6) {
-            if (height > 0.8) {
-              line.push("peak");
-            } else {
-              line.push("mountain");
-            }
-          } else {
-            if (height > 0.5) {
-              if (Math.random() > 0.9) {
-                line.push("tree");
-              } else {
-                line.push("grass");
-              }
-            } else {
-              if (height < 0.4) {
-                line.push("sand");
-              } else {
-                const grassOptions: TypeNames[] = ["grass", "stone", "flower"];
-                line.push(
-                  grassOptions[Math.floor(Math.random() * grassOptions.length)]
-                );
-              }
-            }
-          }
-        } else {
+
+        if (height < 0.3) {
           line.push("water");
+        } else if (height < 0.4) {
+          line.push("sand");
+        } else if (height < 0.5) {
+          const grassOptions: TypeNames[] = ["grass", "stone", "flower"];
+          line.push(
+            grassOptions[Math.floor(Math.random() * grassOptions.length)]
+          );
+        } else if (height < 0.6) {
+          if (Math.random() > 0.9) {
+            line.push("tree");
+          } else {
+            line.push("grass");
+          }
+        } else if (height < 0.8) {
+          line.push("mountain");
+        } else {
+          line.push("peak");
         }
       }
       grid.push(line);
@@ -96,7 +90,7 @@ export const GameManager: React.FC = () => {
       persistence: 0.2,
     });
     generateWorld();
-  }
+  };
 
   const handleAmplitudeChange = (value: number | number[]) => {
     if (typeof value === "number") {
@@ -150,7 +144,12 @@ export const GameManager: React.FC = () => {
           discrete={true}
           onChange={handleOctavesChange}
         />
-        <Button className={styles.button} variant="contained" color="secondary" onClick={generateWorld}>
+        <Button
+          className={styles.button}
+          variant="contained"
+          color="secondary"
+          onClick={generateWorld}
+        >
           Generate
         </Button>
       </div>
