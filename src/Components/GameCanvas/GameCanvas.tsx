@@ -28,8 +28,8 @@ export const GameCanvas: React.FC<GameCanvasProps> = (props) => {
     p5Ref.current = p5;
 
     p5.createCanvas(
-      canvasParentRef.clientWidth,
-      canvasParentRef.clientHeight
+      1000,
+      1000
     ).parent(canvasParentRef);
   }, []);
 
