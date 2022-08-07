@@ -5,6 +5,7 @@ import { GameCanvas } from "../GameCanvas";
 import Button from "@mui/material/Button";
 import perlin from "perlin-noise";
 import { ControlSlider } from "../ControlSlider";
+import { debounce } from "lodash";
 import styles from "./GameManager.module.css";
 
 type noiseOptions = {
@@ -32,16 +33,10 @@ export const GameManager: React.FC = () => {
     React.useState<noiseOptions>(defaultNoiseOptions);
 
   useEffect(() => {
-    if (!firstRenderRef.current) {
-      return;
-    }
-
     generateWorld();
+  }, [noiseOptions]);
 
-    firstRenderRef.current = false;
-  }, []);
-
-  const generateWorld = () => {
+  const generateWorld = debounce(() => {
     const noiseMap = perlin.generatePerlinNoise(100, 100, noiseOptions);
 
     let grid: TypeNames[][] = [];
@@ -81,16 +76,7 @@ export const GameManager: React.FC = () => {
         y: 0,
       },
     });
-  };
-
-  const resetToDefault = () => {
-    setNoiseOptions({
-      octaveCount: 4,
-      amplitude: 0.1,
-      persistence: 0.2,
-    });
-    generateWorld();
-  };
+  }, 200);
 
   const handleAmplitudeChange = (value: number | number[]) => {
     if (typeof value === "number") {
@@ -149,7 +135,7 @@ export const GameManager: React.FC = () => {
           color="secondary"
           onClick={generateWorld}
         >
-          Generate
+          Re-Generate
         </Button>
       </div>
       <GameCanvas gameState={gameState} />

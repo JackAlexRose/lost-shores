@@ -31,7 +31,7 @@ export const ControlSlider: React.FC<ControlSliderProps> = (props) => {
         marks={props.discrete}
         min={props.discrete ? 0 : undefined}
         max={props.discrete ? 100 / props.scaleFactor : undefined}
-        onChange={(event, value) => props.onChange(value)}
+        onChangeCommitted={(event, value) => props.onChange(value)}
       />
     </div>
   );
