@@ -1,0 +1,11 @@
+.controls {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  padding: 10px !important;
+  margin: 10px !important;
+}
+
