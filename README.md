@@ -1,5 +1,7 @@
 # Lost Shores
 
+[You can view a live version of this app hosted on Vercel!](https://lost-shores.vercel.app/)
+
 This is a 2D world generator inspired by Dwarf Fortress. It uses a [perlin noise](https://en.wikipedia.org/wiki/Perlin_noise) algorithm to generate a world. The world is generated in a grid of 100x100 tiles.
 
 The tiles are assigned a type according to the values of the heightmap and then these heights are sampled and compared with a ruleset that looks like this:
