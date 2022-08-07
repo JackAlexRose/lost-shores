@@ -1,17 +1,19 @@
 # Lost Shores
 
+![Lost-Shores Screenshot](./public/lost-shores.png)
+
 [You can view a live version of this app hosted on Vercel!](https://lost-shores.vercel.app/)
 
 This is a 2D world generator inspired by Dwarf Fortress. It uses a [perlin noise](https://en.wikipedia.org/wiki/Perlin_noise) algorithm to generate a world. The world is generated in a grid of 100x100 tiles.
 
 The tiles are assigned a type according to the values of the heightmap and then these heights are sampled and compared with a ruleset that looks like this:
 
-* If the height is less than 0.3, the tile is water.
-* If the height is between 0.3 and 0.4, the tile is sand.
-* If the height is between 0.4 and 0.5, the tile is grass (grass can have grass, flowers or rocks as a tile).
-* If the height is between 0.5 and 0.6, the tile is either a tree or grass.
-* If the height is between 0.6 and 0.8, the tile is a mountain.
-* If the height is between 0.8 and 1, the tile is a peak.
+- If the height is less than 0.3, the tile is water.
+- If the height is between 0.3 and 0.4, the tile is sand.
+- If the height is between 0.4 and 0.5, the tile is grass (grass can have grass, flowers or rocks as a tile).
+- If the height is between 0.5 and 0.6, the tile is either a tree or grass.
+- If the height is between 0.6 and 0.8, the tile is a mountain.
+- If the height is between 0.8 and 1, the tile is a peak.
 
 <mark>Try increasing the number of octaves and amplitude to get a more interesting, larger world.</mark> Increasing the persistence leads to more fine grained noise, which means more small details.
 
