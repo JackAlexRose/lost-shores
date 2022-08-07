@@ -106,7 +106,7 @@ export const GameManager: React.FC = () => {
   };
 
   return (
-    <>
+    <div className={styles.gameWrapper}>
       <div className={styles.controls}>
         <ControlSlider
           label="Amplitude"
@@ -139,6 +139,6 @@ export const GameManager: React.FC = () => {
         </Button>
       </div>
       <GameCanvas gameState={gameState} />
-    </>
+    </div>
   );
 };

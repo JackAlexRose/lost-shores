@@ -1,10 +1,21 @@
 .wrapper {
-  width: 100vw;
   display: flex;
   justify-content: center;
-  padding: 50px 0;
+  width: 100%;
+  margin: 50px 20px;
 }
 
 .descriptionBox {
-  width: 1000px;
+  width: 100%;
+  max-width: 1000px;
+  flex-shrink: 0;
+}
+
+ul {
+  text-align: left;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+mark {
+  background-color: #ffc107;
 }

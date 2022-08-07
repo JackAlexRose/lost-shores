@@ -1,19 +1,15 @@
 .canvasWrapper {
   position: relative;
-  width: 100vw;
   height: fit-content;
   display: flex;
   justify-content: center;
-  overflow: hidden;
   box-sizing: border-box;
+  margin: 10px 0;
 }
-
 .gameCanvas {
   width: 1000px;
   height: 1000px;
   border: #000 solid 1px;
   position: relative;
-  top: 2vh;
-  overflow: hidden;
   display: flex;
 }
