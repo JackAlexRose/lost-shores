@@ -35,7 +35,12 @@ export const DescriptionBox: React.FC = () => {
           State management is done through React using the react-p5 library. For
           an explanation of lacunarity and persistence in the Perlin noise
           algorithm used please watch an inspiration of mine{" "}
-          <a href="https://youtu.be/wbpMiKiSKm8">Sebastian Lague</a>.
+          <a href="https://youtu.be/wbpMiKiSKm8">Sebastian Lague</a>. <br />
+          <br />
+          Try increasing the number of octaves and amplitude to get a more
+          interesting, larger world. Increasing the persistence leads to more
+          fine grained noise, which means more small details. <br /> <br />
+          The code is available on{" "} <a href="https://github.com/JackAlexRose/lost-shores">Github</a>.
         </Typography>
       </div>
     </div>
