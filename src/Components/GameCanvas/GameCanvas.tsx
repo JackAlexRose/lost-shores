@@ -64,7 +64,6 @@ export const GameCanvas: React.FC<GameCanvasProps> = (props) => {
           if (tile === "tree") {
             offsetY -= Math.random() * 7 + 3;
             offsetX += Math.random() * 7 - 3.5;
-            p5.strokeWeight(3);
             p5.stroke(p5.color(TileTypes[tile].color));
           }
 

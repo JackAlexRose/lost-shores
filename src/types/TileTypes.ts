@@ -46,9 +46,9 @@ export const TileTypes: { [key: string]: TileType } = {
     isMonster: false,
   },
   tree: {
-    char: "⇑",
-    color: "#734927",
-    backgroundColor: "#278741",
+    char: "♣︎",
+    color: "#278741",
+    backgroundColor: "#734927",
     isWalkable: false,
     isVisible: true,
     isItem: false,

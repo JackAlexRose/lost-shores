@@ -21,7 +21,6 @@ const defaultNoiseOptions: noiseOptions = {
 };
 
 export const GameManager: React.FC = () => {
-  const firstRenderRef = React.useRef(true);
   const [gameState, setGameState] = React.useState<GameState>({
     tiles: [[]],
     playerLocation: {
